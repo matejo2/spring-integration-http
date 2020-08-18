@@ -34,10 +34,9 @@ class PostDataFlowTest extends Specification {
         def requestEntity = new HttpEntity<String>("heiöehef", requestHeaders)
 
         when: "request is sent"
-        // def response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class)
+        def response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class)
 
         then: "status code is OK"
-        //response.statusCodeValue == HttpStatus.OK.value()
-        restTemplate.exchange(url, HttpMethod.POST, requestEntity, String.class).statusCode == HttpStatus.OK
+        response.statusCodeValue == HttpStatus.OK.value()
     }
 }
